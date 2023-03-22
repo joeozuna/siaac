@@ -1,7 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RoleController;
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 Route::view('home', 'home');
 
@@ -26,3 +30,5 @@ Route::group(['middleware' => ['auth']], function () {
     //Route::resource('users', UserController::class);
     Route::resource('persons', PersonController::class);
 });
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
