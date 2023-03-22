@@ -80,11 +80,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'locale' => 'es',
-=======
-    'locale' => 'en',
->>>>>>> a3d4b43 (update laravel files on main)
 
     /*
     |--------------------------------------------------------------------------
@@ -178,12 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
         App\Providers\FortifyServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-=======
->>>>>>> a3d4b43 (update laravel files on main)
 
     ],
 
@@ -239,11 +232,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-<<<<<<< HEAD
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-=======
->>>>>>> a3d4b43 (update laravel files on main)
 
     ],
 

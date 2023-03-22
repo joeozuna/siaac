@@ -2,16 +2,12 @@
 
 namespace Database\Seeders;
 
-<<<<<<< HEAD
 use App\Models\Person;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-=======
-use Illuminate\Database\Seeder;
->>>>>>> a3d4b43 (update laravel files on main)
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,7 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-<<<<<<< HEAD
         //Crear los permisos
         $permissions = [
             'role-list',
@@ -114,8 +109,5 @@ class DatabaseSeeder extends Seeder
         //$permissions = Permission::pluck('id', 'id')->all();
         $role2->givePermissionTo('person-edit');
         $user2->assignRole([$role2->id]);
-=======
-        // \App\Models\User::factory(10)->create();
->>>>>>> a3d4b43 (update laravel files on main)
     }
 }
