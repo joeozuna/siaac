@@ -3,6 +3,7 @@
 @section('title', 'Editar Rol')
 
 @section('content_header')
+    <link rel="stylesheet" type="text/css" href="{{ url('css/configs.css') }}">
     <h1>Editar Rol</h1>
 @stop
 
@@ -64,6 +65,11 @@
 
             {!! Form::close() !!}
     </x-adminlte-card>
+
+    <footer class="main-footer">
+        {{ Breadcrumbs::render('actualizar_rol') }}
+    </footer>
+
 @endsection
 
 @section('css')

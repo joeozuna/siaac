@@ -3,7 +3,8 @@
 @section('title', 'Roles')
 
 @section('content_header')
-
+    <link rel="stylesheet" type="text/css" href="{{ url('css/configs.css') }}">
+    <h1>Roles</h1>
 @stop
 
 @section('plugins.Toastr', true)
@@ -12,9 +13,6 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Roles</h2>
-            </div>
             <div align="left">
                 @can('role-create')
                     <a class="btn btn-success" label="Crear Rol" href="{{ route('roles.create') }}" />
@@ -22,6 +20,7 @@
                     </a>
                 @endcan
             </div>
+
         </div>
     </div>
 
@@ -30,6 +29,7 @@
     <div class="card">
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped table-sm">
+
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
@@ -73,10 +73,15 @@
                     @endforeach
                 </tbody>
             </table>
+
+
         </div>
 
     </div>
 
+    <footer class="main-footer">
+        {{ Breadcrumbs::render('roles') }}
+    </footer>
 
 @endsection
 

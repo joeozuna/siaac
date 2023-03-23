@@ -3,19 +3,12 @@
 @section('title', 'Ver Rol')
 
 @section('content_header')
+    <link rel="stylesheet" type="text/css" href="{{ url('css/configs.css') }}">
     <h1>Ver Rol</h1>
 @stop
 
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
-            </div>
-        </div>
-    </div>
 
     <x-adminlte-card>
         <div class="container">
@@ -45,7 +38,9 @@
         </div>
     </x-adminlte-card>
 
-
+    <footer class="main-footer">
+        {{ Breadcrumbs::render('ver_rol') }}
+    </footer>
 @endsection
 
 @section('css')

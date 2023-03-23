@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('home', 'home');
+Route::view('home', 'home')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);

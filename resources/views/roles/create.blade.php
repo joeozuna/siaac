@@ -3,6 +3,7 @@
 @section('title', 'Crear Rol')
 
 @section('content_header')
+    <link rel="stylesheet" type="text/css" href="{{ url('css/configs.css') }}">
     <h1>Crear Rol</h1>
 @stop
 
@@ -71,7 +72,9 @@
         {!! Form::close() !!}
     </x-adminlte-card>
 
-
+    <footer class="main-footer">
+        {{ Breadcrumbs::render('crear_rol') }}
+    </footer>
 
 @endsection
 
