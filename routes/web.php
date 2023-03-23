@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PersonController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::view('home', 'home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('roles', RoleController::class);
+    //Route::resource('users', UserController::class);
+    Route::resource('persons', PersonController::class);
 });
