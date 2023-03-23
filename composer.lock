@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "e34c95f3f9d4ef40446d43e1e6ec5922",
     "packages": [
         {
@@ -50,6 +51,11 @@
             "time": "2022-02-07T20:33:09+00:00"
         },
         {
+=======
+    "content-hash": "c61ff82cbf0142a401a48a8161e1595a",
+    "packages": [
+        {
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "asm89/stack-cors",
             "version": "v2.1.1",
             "source": {
@@ -106,6 +112,7 @@
             "time": "2022-01-18T09:12:03+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
             "source": {
@@ -160,6 +167,8 @@
             "time": "2022-12-07T17:46:57+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "brick/math",
             "version": "0.10.2",
             "source": {
@@ -216,6 +225,7 @@
             "time": "2022-08-10T22:54:19+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "dasprid/enum",
             "version": "1.0.4",
             "source": {
@@ -266,6 +276,8 @@
             "time": "2023-03-01T18:44:03+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "dflydev/dot-access-data",
             "version": "v3.0.2",
             "source": {
@@ -1110,6 +1122,7 @@
             "time": "2023-03-09T13:19:02+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "jeroennoten/laravel-adminlte",
             "version": "v3.8.6",
             "source": {
@@ -1233,6 +1246,8 @@
             "time": "2023-01-06T15:57:08+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "laravel/framework",
             "version": "v8.83.27",
             "source": {
@@ -1599,6 +1614,7 @@
             "time": "2023-02-15T16:40:09+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "laravelcollective/html",
             "version": "v6.4.0",
             "source": {
@@ -1671,6 +1687,8 @@
             "time": "2023-02-13T18:15:35+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "league/commonmark",
             "version": "2.3.9",
             "source": {
@@ -2483,6 +2501,7 @@
             "time": "2022-01-27T09:35:39+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "paragonie/constant_time_encoding",
             "version": "v2.6.3",
             "source": {
@@ -2550,6 +2569,8 @@
             "time": "2022-06-14T06:56:20+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "phpoption/phpoption",
             "version": "1.9.1",
             "source": {
@@ -2625,6 +2646,7 @@
             "time": "2023-02-25T19:38:58+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "pragmarx/google2fa",
             "version": "v8.0.1",
             "source": {
@@ -2677,6 +2699,8 @@
             "time": "2022-06-13T21:57:56+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "psr/container",
             "version": "1.1.2",
             "source": {
@@ -3037,6 +3061,7 @@
         },
         {
             "name": "psy/psysh",
+<<<<<<< HEAD
             "version": "v0.11.12",
             "source": {
                 "type": "git",
@@ -3047,6 +3072,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/bobthecow/psysh/zipball/52cb7c47d403c31c0adc9bf7710fc355f93c20f7",
                 "reference": "52cb7c47d403c31c0adc9bf7710fc355f93c20f7",
+=======
+            "version": "v0.11.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bobthecow/psysh.git",
+                "reference": "722317c9f5627e588788e340f29b923e58f92f54"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/722317c9f5627e588788e340f29b923e58f92f54",
+                "reference": "722317c9f5627e588788e340f29b923e58f92f54",
+>>>>>>> a3d4b43 (update laravel files on main)
                 "shasum": ""
             },
             "require": {
@@ -3107,9 +3144,15 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/bobthecow/psysh/tree/v0.11.12"
             },
             "time": "2023-01-29T21:24:40+00:00"
+=======
+                "source": "https://github.com/bobthecow/psysh/tree/v0.11.13"
+            },
+            "time": "2023-03-21T14:22:44+00:00"
+>>>>>>> a3d4b43 (update laravel files on main)
         },
         {
             "name": "ralouphie/getallheaders",
@@ -3337,6 +3380,7 @@
             "time": "2023-01-12T18:13:24+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "spatie/laravel-permission",
             "version": "5.9.1",
             "source": {
@@ -3419,6 +3463,8 @@
             "time": "2023-02-06T21:37:02+00:00"
         },
         {
+=======
+>>>>>>> a3d4b43 (update laravel files on main)
             "name": "swiftmailer/swiftmailer",
             "version": "v6.3.0",
             "source": {
