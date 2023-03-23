@@ -26,6 +26,7 @@ class CreatePersonsTable extends Migration
             $table->date('birthdate');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

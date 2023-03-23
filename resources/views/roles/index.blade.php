@@ -3,28 +3,27 @@
 @section('title', 'Roles')
 
 @section('content_header')
-    <h1>Roles</h1>
+
 @stop
+
+@section('plugins.Toastr', true)
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Role Management</h2>
+                <h2>Roles</h2>
             </div>
-            <div class="pull-right">
+            <div align="left">
                 @can('role-create')
-                    <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+                    <a class="btn btn-success" label="Crear Rol" href="{{ route('roles.create') }}" />
+                    <i class="fas fa-solid fa-plus"></i> Crear Rol
+                    </a>
                 @endcan
             </div>
         </div>
     </div>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
 
     <br>
 
@@ -45,7 +44,8 @@
                             <td>{{ $role->name }}</td>
                             <td>
                                 <nobr>
-                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST">
+                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST"
+                                        name="form<?php echo $role->id; ?>" id="form<?php echo $role->id; ?>">
                                         <a class="btn btn-xs btn-default text-teal mx-1 shadow" title="Ver"
                                             href="{{ route('roles.show', $role->id) }}">
                                             <i class="fa fa-lg fa-fw fa-eye"></i>
@@ -60,8 +60,8 @@
                                         @can('role-delete')
                                             @method('DELETE')
                                             @csrf
-                                            <button class='btn btn-xs btn-default text-danger mx-1 shadow' type="submit"
-                                                onclick="return confirm('Estas seguro de borrarlo?')">
+                                            <button class='btn btn-xs btn-default text-danger mx-1 shadow' type="button"
+                                                onclick="confirmar(<?php echo $role->id; ?>)">
                                                 <i class="fa fa-lg fa-fw fa-trash"></i>
                                             </button>
                                         @endcan
@@ -94,5 +94,52 @@
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
+    </script>
+
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            toastr.options = {
+                "positionClass": "toast-bottom-right"
+            }
+
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
+    </script>
+
+    <script>
+        function confirmar(numformulario) {
+            event.preventDefault();
+            form = '#form' + numformulario
+            var form = document.querySelector(form);
+
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: 'No podrás deshacer esta acción',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        }
     </script>
 @stop

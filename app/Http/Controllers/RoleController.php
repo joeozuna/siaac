@@ -47,9 +47,8 @@ class RoleController extends Controller
 
         return view('roles.index', ['data' => $array, 'heads' => $heads, 'config' => $config]);*/
 
-        $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        return view('roles.index', compact('roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        $roles = Role::all();
+        return view('roles.index', compact('roles'));
     }
 
     /**
@@ -90,12 +89,20 @@ class RoleController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
+        ], [
+            'name.required' => 'El campo nombre no puede ser vacío',
+            'permission.required' => 'Debe seleccionar al menos un permiso',
         ]);
 
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')->with('success', 'Role created successfully');
+        $notification = array(
+            'message' => 'Rol creado',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('roles.index')->with($notification);
     }
 
     /**
@@ -161,6 +168,9 @@ class RoleController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'permission' => 'required',
+        ], [
+            'name.required' => 'El campo nombre no puede ser vacío',
+            'permission.required' => 'Debe seleccionar al menos un permiso',
         ]);
 
         $role = Role::find($id);
@@ -169,8 +179,12 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
-            ->with('success', 'Role updated successfully');
+        $notification = array(
+            'message' => 'Rol actualizado',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('roles.index')->with($notification);
     }
 
     /**
@@ -181,8 +195,12 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        DB::table("roles")->where('id', $id)->delete();
-        return redirect()->route('roles.index')->with('success', 'Role deleted successfully');
-    }
+        Role::find($id)->delete();
 
+        $notification = array(
+            'message' => 'Rol eliminado',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('roles.index')->with($notification);
+    }
 }
