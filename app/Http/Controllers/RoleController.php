@@ -4,8 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use App\Models\Permission;
+use App\Models\Role;
+
+const traduccion_descripcion_permisos = [
+    "role-list" => "Listar Roles",
+    "role-create" => "Crear Rol",
+    "role-edit" => "Editar Rol",
+    "role-delete" => "Eliminar Rol",
+    "role-view" => "Ver Rol",
+    "person-list" => "Listar Personas",
+    "person-create" => "Crear Persona",
+    "person-edit" => " Editar Persona",
+    "person-delete" => "Eliminar Persona",
+    "person-view" => "Ver Rol",
+];
+
+const traduccion_nombre_permisos = [
+    "role" => "Roles",
+    "person" => "Personas",
+];
 
 class RoleController extends Controller
 {
@@ -30,23 +48,6 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        /*$heads = ['ID', 'Nombre', ['label' => 'Acciones', 'no-export' => true, 'width' => 5]];
-
-        //Recorrer los roles para formar un array con la información a devolver
-        $roles = Role::orderBy('id')->get();;
-        $array = [];
-        foreach ($roles as $key => $role) {
-            $array[] = [$role->id, $role->name, '<nobr>' . $this->obtenerBotonEditar($role->id, $request) . $this->obtenerBotonEliminar($role->id, $request) . $this->obtenerBotonVer($role->id, $request) . '</nobr>'];
-        }
-
-        $config = [
-            'data' => $array,
-            //'order' => [[1, 'desc']],
-            'columns' => [null, null, ['orderable' => false]],
-        ];
-
-        return view('roles.index', ['data' => $array, 'heads' => $heads, 'config' => $config]);*/
-
         $roles = Role::all();
         return view('roles.index', compact('roles'));
     }
@@ -59,7 +60,8 @@ class RoleController extends Controller
     public function create()
     {
 
-        //$permission = Permission::get();
+
+
 
         $sql = 'SELECT description, COUNT(*) AS cant from permissions GROUP BY description; ';
         $description = DB::select($sql);
@@ -67,14 +69,17 @@ class RoleController extends Controller
         $cant = count($description);
         $arr = [];
         for ($i = 0; $i < $cant; $i++) {
-            $desc = $description[$i]->description;
-            $perm = DB::select("SELECT id, name from permissions where description = ?", [$desc]);
+
+            $name_permission = $description[$i]->description;
+            $perm = DB::select("SELECT id, name from permissions where description = ?", [$name_permission]);
+
+            $nombre_permiso = traduccion_nombre_permisos[$name_permission];
 
             for ($j = 0; $j < $description[$i]->cant; $j++) {
-                $arr[$description[$i]->description] = $perm;
+                $arr[$nombre_permiso] = $perm;
+                $arr[$nombre_permiso][$j]->name = traduccion_descripcion_permisos[$perm[$j]->name];
             }
         }
-
         return view('roles.create', ['permission' => $arr]);
     }
 
@@ -118,6 +123,11 @@ class RoleController extends Controller
             ->where("role_has_permissions.role_id", $id)
             ->get();
 
+        $cant = count($rolePermissions);
+        for ($i = 0; $i < $cant; $i++) {
+            $rolePermissions[$i]->name = traduccion_descripcion_permisos[$rolePermissions[$i]->name];
+        }
+
         return view('roles.show', compact('role', 'rolePermissions'));
     }
 
@@ -130,7 +140,6 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        //$permission = Permission::get();
 
         $sql = 'SELECT description, COUNT(*) AS cant from permissions GROUP BY description; ';
         $description = DB::select($sql);
@@ -138,11 +147,14 @@ class RoleController extends Controller
         $cant = count($description);
         $arr = [];
         for ($i = 0; $i < $cant; $i++) {
-            $desc = $description[$i]->description;
-            $perm = DB::select("SELECT id, name from permissions where description = ?", [$desc]);
+            $name_permission = $description[$i]->description;
+            $perm = DB::select("SELECT id, name from permissions where description = ?", [$name_permission]);
+
+            $nombre_permiso = traduccion_nombre_permisos[$name_permission];
 
             for ($j = 0; $j < $description[$i]->cant; $j++) {
-                $arr[$description[$i]->description] = $perm;
+                $arr[$nombre_permiso] = $perm;
+                $arr[$nombre_permiso][$j]->name = traduccion_descripcion_permisos[$perm[$j]->name];
             }
         }
 
